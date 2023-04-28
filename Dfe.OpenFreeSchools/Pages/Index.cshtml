@@ -1,0 +1,17 @@
+﻿@page
+@using Dfe.BuildFreeSchools.Pages;
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Project list</h2>
+            <p class="govuk-body">The project list will help you manage projects that are in flight.</p>
+            <a class="govuk-button" asp-page="/project/create" role="button" data-testid="create-project-button">
+                Create Project
+            </a>
+    </div>
+</div>
