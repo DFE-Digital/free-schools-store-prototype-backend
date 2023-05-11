@@ -19,14 +19,7 @@ namespace OpenFreeSchools.API.Factories.Projects
                 CreatedAt = DateTime.Now,
 				CreatedBy = createProjectRequest.CreatedBy			
 			};
-		}
-        public static Project CreateDBModel(GetAllProjectsRequest createProjectRequest)
-        {
-            return new Project
-            {
-            };
-        }
-      
+		}      
 
         public static ProjectResponse CreateResponse(Project model)
 		{

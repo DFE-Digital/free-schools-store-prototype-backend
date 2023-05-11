@@ -18,7 +18,6 @@ using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
 using System;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace Dfe.OpenFreeSchools;
 
@@ -64,8 +63,9 @@ public class Startup
          .AddMicrosoftIdentityUI();
 
       services.AddScoped<ICreateProjectService, CreateProjectService>();
+      services.AddScoped<IGetProjectsByUserService, GetProjectsByUserService>();
 
-      services.AddScoped(sp => sp.GetService<IHttpContextAccessor>()?.HttpContext?.Session);
+        services.AddScoped(sp => sp.GetService<IHttpContextAccessor>()?.HttpContext?.Session);
       services.AddSession(options =>
       {
          options.IdleTimeout = _authenticationExpiration;

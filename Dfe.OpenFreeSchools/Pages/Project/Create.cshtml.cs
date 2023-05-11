@@ -39,7 +39,6 @@ namespace Dfe.OpenFreeSchools.Pages.Project
 
         public void OnGet()
         {
-            ProjectID = "hi";
         }
 
         public async Task<IActionResult> OnPostAsync()
@@ -53,9 +52,9 @@ namespace Dfe.OpenFreeSchools.Pages.Project
                     return Page();
                 }
 
-                var caseUrn = await _createProjectService.CreateProject(ProjectID, SchoolName, ApplicationNumber, ApplicationWave, "Test");
+                var caseUrn = await _createProjectService.CreateProject(ProjectID, SchoolName, ApplicationNumber, ApplicationWave, "Sukhy");
 
-                return Redirect($"/case/{caseUrn}/management");
+                return Redirect($"/");
             }
             catch (Exception ex)
             {

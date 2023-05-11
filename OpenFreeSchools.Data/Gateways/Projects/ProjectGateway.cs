@@ -13,7 +13,9 @@ namespace OpenFreeSchools.Data.Gateways.Projects
 	public interface IProjectGateway
 	{
 		Task<Project> CreateProject(Project request);
-	}
+		Project[] GetProjectsByUser(string user);
+
+    }
 
 	public class ProjectGateway : IProjectGateway
 	{
@@ -26,23 +28,21 @@ namespace OpenFreeSchools.Data.Gateways.Projects
 			_openFreeSchoolsDbContext= openFreeSchoolsDbContext;
 		}
 
-        public async Task<Project> GetProject(Project request)
+        public Project[] GetProjectsByUser(string user)
         {
             try
             {
-                request.UpdatedAt = request.CreatedAt;
-				//_openFreeSchoolsDbContext.Projects.All;
-                await _openFreeSchoolsDbContext.SaveChangesAsync();
-                return request;
+				var projects = _openFreeSchoolsDbContext.Projects.Where(x => x.CreatedBy == user).ToArray();
+                return projects;
             }
             catch (DbUpdateException ex)
             {
-                _logger.LogError("Failed to create Project with Id {Id}, {ex}", request.Id, ex);
+                _logger.LogError("Failed to create Project with Id {Id}, {ex}", user, ex);
                 throw;
             }
             catch (Exception ex)
             {
-                _logger.LogError("An application exception has occurred whilst creating Project with Id {Id}, {ex}", request.Id, ex);
+                _logger.LogError("An application exception has occurred whilst creating Project with Id {Id}, {ex}", user, ex);
                 throw;
             }
         }

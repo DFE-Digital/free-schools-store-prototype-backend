@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ConcernsCaseWork.API.UseCases.Project;
+using Microsoft.AspNetCore.Mvc;
 using OpenFreeSchools.API.Contracts.RequestModels.Projects;
 using OpenFreeSchools.API.Contracts.ResponseModels;
 using OpenFreeSchools.API.Contracts.ResponseModels.Project;
+using OpenFreeSchools.API.ResponseModels;
 using OpenFreeSchools.API.UseCases;
 
 namespace ConcernsCaseWork.API.Controllers
@@ -12,28 +14,27 @@ namespace ConcernsCaseWork.API.Controllers
 	{
 		private readonly ILogger<ProjectController> _logger;
 		private readonly IUseCase<CreateProjectRequest, ProjectResponse> _createProjectUseCase;
+        private readonly IUseCase<GetAllProjectsRequest, ProjectResponse[]> _getProjectUseCase;
 
-		public ProjectController(ILogger<ProjectController> logger, IUseCase<CreateProjectRequest, ProjectResponse> createProjectUseCase)
+        public ProjectController(ILogger<ProjectController> logger, 
+								 IUseCase<CreateProjectRequest, ProjectResponse> createProjectUseCase, 
+								 IUseCase<GetAllProjectsRequest, ProjectResponse[]> getProjectUseCase)
 		{
 			_logger = logger;
 			_createProjectUseCase = createProjectUseCase;
+			_getProjectUseCase = getProjectUseCase;
 		}
 
 		[HttpGet]
 		[MapToApiVersion("1.0")]
-		public async Task<ActionResult<ApiSingleResponseV2<ProjectResponse>>> GetProject(CancellationToken cancellationToken = default)
+		public async Task<ActionResult<ApiResponseV2<ProjectResponse[]>>> GetProject(string user, CancellationToken cancellationToken = default)
 		{
-			var response = new ProjectResponse
-			{
-				Id = 1,
-				ProjectId = "boop",
-				SchoolName = "Name",
-				CreatedAt = DateTime.UtcNow,
-				CreatedBy = "You",
-				UpdatedAt = DateTime.UtcNow
-			};
+			var projects = _getProjectUseCase.Execute(new GetAllProjectsRequest() { User = user});
 
-			return new ObjectResult(response) { StatusCode = StatusCodes.Status200OK };
+			var pagingResponse = PagingResponseFactory.Create(1, projects.Count(), projects.Count(), Request);
+			var response = new ApiResponseV2<ProjectResponse>(projects, pagingResponse);
+
+            return new ObjectResult(response) { StatusCode = StatusCodes.Status200OK };
 		}
 
 		[HttpPost]

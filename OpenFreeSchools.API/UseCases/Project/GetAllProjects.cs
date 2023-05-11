@@ -7,7 +7,7 @@ using OpenFreeSchools.Data.Gateways.Projects;
 
 namespace ConcernsCaseWork.API.UseCases.Project
 {
-    public class GetAllProjects : IUseCase<GetAllProjectsRequest, ProjectResponse>
+    public class GetAllProjects : IUseCase<GetAllProjectsRequest, ProjectResponse[]>
 	{
 		private readonly IProjectGateway _gateway;
 
@@ -16,17 +16,12 @@ namespace ConcernsCaseWork.API.UseCases.Project
 			_gateway = gateway;
 		}
 
-		public ProjectResponse Execute(GetAllProjectsRequest request)
+		public ProjectResponse[] Execute(GetAllProjectsRequest request)
 		{
-			return ExecuteAsync(request).Result;
+			return _gateway.GetProjectsByUser(request.User)
+						   .Select(x => ProjectFactory.CreateResponse(x))
+						   .ToArray();
 		}
 
-		public async Task<ProjectResponse> ExecuteAsync(GetAllProjectsRequest request)
-		{
-			var dbModel = ProjectFactory.CreateDBModel(request);
-			var createdProjects = await _gateway.CreateProject(dbModel);
-
-			return ProjectFactory.CreateResponse(createdProjects);
-		}
 	}
 }
