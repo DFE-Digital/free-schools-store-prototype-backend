@@ -35,5 +35,28 @@ namespace OpenFreeSchools.API.Factories.Projects
 				UpdatedAt= model.UpdatedAt,
 			};
 		}
-	}
+
+        public static Project DeleteDBModel(DeleteProjectRequest deleteProjectRequest)
+        {
+            return new Project
+            {
+                ProjectId = deleteProjectRequest.ProjectId,
+            };
+        }
+
+        public static ProjectResponse DeleteResponse(Project model)
+        {
+            return new ProjectResponse
+            {
+                Id = model.Id,
+                ProjectId = model.ProjectId,
+                SchoolName = model.SchoolName,
+                ApplicationNumber = model.ApplicationNumber,
+                ApplicationWave = model.ApplicationWave,
+                CreatedAt = model.CreatedAt,
+                CreatedBy = model.CreatedBy,
+                UpdatedAt = model.UpdatedAt,
+            };
+        }
+    }
 }
