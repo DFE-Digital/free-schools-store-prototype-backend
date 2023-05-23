@@ -19,11 +19,13 @@ namespace ConcernsCaseWork.API.Controllers
 
         public ProjectController(ILogger<ProjectController> logger, 
 								 IUseCase<CreateProjectRequest, ProjectResponse> createProjectUseCase, 
-								 IUseCase<GetAllProjectsRequest, ProjectResponse[]> getProjectUseCase)
+								 IUseCase<GetAllProjectsRequest, ProjectResponse[]> getProjectUseCase,
+								 IUseCase<DeleteProjectRequest, ProjectResponse> deleteProjectUseCase)
 		{
 			_logger = logger;
 			_createProjectUseCase = createProjectUseCase;
 			_getProjectUseCase = getProjectUseCase;
+			_deleteProjectUseCase = deleteProjectUseCase;
 		}
 
 		[HttpGet]
@@ -50,10 +52,10 @@ namespace ConcernsCaseWork.API.Controllers
 
         [HttpDelete]
         [MapToApiVersion("1.0")]
-        public async Task<ActionResult<ApiSingleResponseV2<ProjectResponse>>> Delete(DeleteProjectRequest request, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<ApiSingleResponseV2<ProjectResponse>>> Delete(string projectId, CancellationToken cancellationToken = default)
         {
 
-            var deletedProject = _deleteProjectUseCase.Execute(request);
+            var deletedProject = _deleteProjectUseCase.Execute(new DeleteProjectRequest() {  ProjectId = projectId });
             var response = new ApiSingleResponseV2<ProjectResponse>(deletedProject);
 
             return new ObjectResult(response) { StatusCode = StatusCodes.Status200OK };

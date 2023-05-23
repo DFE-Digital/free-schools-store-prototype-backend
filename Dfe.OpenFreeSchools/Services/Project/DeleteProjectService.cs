@@ -37,10 +37,8 @@ namespace Dfe.OpenFreeSchools.Services.Project
                 // Create http client
                 var client = _clientFactory.CreateClient();
 
-                
-
                 // Execute request
-                var response = await client.DeleteAsync($"https://localhost:3001/api/Project");
+                var response = await client.DeleteAsync($"https://localhost:3001/api/Project?projectId={ProjectID}");
 
                 // Check status code
                 response.EnsureSuccessStatusCode();

@@ -73,7 +73,7 @@ namespace OpenFreeSchools.Data.Gateways.Projects
             try
             {
                 request.UpdatedAt = request.CreatedAt;
-                _openFreeSchoolsDbContext.Projects.Add(request);
+                _openFreeSchoolsDbContext.Projects.Where(p => p.ProjectId == request.ProjectId).ExecuteDelete();
                 await _openFreeSchoolsDbContext.SaveChangesAsync();
                 return request;
             }
