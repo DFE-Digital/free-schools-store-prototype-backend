@@ -1,0 +1,32 @@
+﻿@page
+@using Dfe.OpenFreeSchools.Pages.Project;
+@model DeleteProjectModel
+@{
+}
+
+
+<div class="text-center">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Delete Project</h2>
+            <div class="app-task-list">
+                <form class="govuk-form-group" method="POST" id="delete-project-form">
+                    <div class="govuk-form-group">
+                        <label asp-for="ProjectID" class="govuk-label" for="project-id">Project ID</label>
+                        <input asp-for="ProjectID" class="govuk-input" type="text" maxlength="100" required>
+                    </div>
+                    <div class="govuk-button-group">
+                        <button data-prevent-double-click="true"
+                                class="govuk-button govuk-button--warning govuk-!-margin-top-6"
+                                data-module="govuk-button"
+                                role="button"
+                                id="delete"
+                                name="action"
+                                value="delete">
+                            Delete
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

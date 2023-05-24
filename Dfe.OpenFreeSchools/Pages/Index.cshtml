@@ -13,55 +13,58 @@
             <a class="govuk-button" asp-page="/project/create" role="button" data-testid="create-project-button">
                 Create Project
             </a>
-			<!-- List -->
+            <a class="govuk-button govuk-button--warning" asp-page="/project/delete" role="button" data-testid="delete-project-button">
+                Delete Project
+            </a>
+            <!-- List -->
 
-			<table class="govuk-table">
-				<thead class="govuk-table__head">
-					<tr class="govuk-table__row tr__large">
-						<th class="govuk-table__header govuk-table__cell__cases" scope="col">
-							Project ID
-						</th>
-						<th class="govuk-table__header govuk-table__cell__cases govuk-table__header__width_14" scope="col" aria-sort="none">
-							School Name
-						</th>
-						<th class="govuk-table__header govuk-table__cell__cases govuk-table__header__width_14" scope="col" aria-sort="none">
-							Application Number
-						</th>
-						<th class="govuk-table__header govuk-table__cell__cases govuk-table__header__width_14" scope="col" aria-sort="none">
-							Application Wave
-						</th>
-					</tr>
-				</thead>
-				<tbody class="govuk-table__body">
-					@if (Model.Projects == null || Model.Projects.Length == 0)
-					{
-						<tr class="govuk-table__row tr__large">
-							<td class="govuk-table__cell__cases govuk-oneline-row">
-								<span>There are no projects available.</span>
-							</td>
-						</tr>
-					}
-					else
-					{
-						foreach (var activeCase in Model.Projects)
-						{
-							<tr class="govuk-table__row tr__large" data-testid="row-@activeCase.ProjectId">
-								<td class="govuk-table__cell" data-testid="case-id">
-									<a class="govuk-link" href="case/@activeCase.ProjectId/management">@activeCase.ProjectId</a>
-								</td>
-								<td class="govuk-table__cell" data-testid="updated-at">
-									@activeCase.SchoolName
-								</td>
-								<td class="govuk-table__cell" data-testid="created-at">
-									@activeCase.ApplicationNumber
-								</td>
-								<td class="govuk-table__cell" data-testid="trust-name">
-									@activeCase.ApplicationWave
-								</td>
-							</tr>
-						}
-					}
-				</tbody>
-			</table>
-    </div>
+            <table class="govuk-table">
+                <thead class="govuk-table__head">
+                    <tr class="govuk-table__row tr__large">
+                        <th class="govuk-table__header govuk-table__cell__cases" scope="col">
+                            Project ID
+                        </th>
+                        <th class="govuk-table__header govuk-table__cell__cases govuk-table__header__width_14" scope="col" aria-sort="none">
+                            School Name
+                        </th>
+                        <th class="govuk-table__header govuk-table__cell__cases govuk-table__header__width_14" scope="col" aria-sort="none">
+                            Application Number
+                        </th>
+                        <th class="govuk-table__header govuk-table__cell__cases govuk-table__header__width_14" scope="col" aria-sort="none">
+                            Application Wave
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="govuk-table__body">
+                    @if (Model.Projects == null || Model.Projects.Length == 0)
+                    {
+                        <tr class="govuk-table__row tr__large">
+                            <td class="govuk-table__cell__cases govuk-oneline-row">
+                                <span>There are no projects available.</span>
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        foreach (var activeCase in Model.Projects)
+                        {
+                            <tr class="govuk-table__row tr__large" data-testid="row-@activeCase.ProjectId">
+                                <td class="govuk-table__cell" data-testid="case-id">
+                                    <a class="govuk-link" href="case/@activeCase.ProjectId/management">@activeCase.ProjectId</a>
+                                </td>
+                                <td class="govuk-table__cell" data-testid="updated-at">
+                                    @activeCase.SchoolName
+                                </td>
+                                <td class="govuk-table__cell" data-testid="created-at">
+                                    @activeCase.ApplicationNumber
+                                </td>
+                                <td class="govuk-table__cell" data-testid="trust-name">
+                                    @activeCase.ApplicationWave
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
 </div>

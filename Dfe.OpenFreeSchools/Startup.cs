@@ -64,6 +64,7 @@ public class Startup
 
       services.AddScoped<ICreateProjectService, CreateProjectService>();
       services.AddScoped<IGetProjectsByUserService, GetProjectsByUserService>();
+      services.AddScoped<IDeleteProjectService, DeleteProjectService>();
 
         services.AddScoped(sp => sp.GetService<IHttpContextAccessor>()?.HttpContext?.Session);
       services.AddSession(options =>
