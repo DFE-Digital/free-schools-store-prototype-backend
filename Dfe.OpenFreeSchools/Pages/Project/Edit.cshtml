@@ -1,0 +1,44 @@
+﻿@page
+@using Dfe.OpenFreeSchools.Pages.Project;
+@model EditProjectModel
+@{
+}
+
+
+<div class="text-center">
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Edit Project</h2>
+            <div class="app-task-list">
+                <form class="govuk-form-group" method="POST" id="edit-project-form">
+                    <div class="govuk-form-group">
+                        <label asp-for="ProjectID" class="govuk-label" for="project-id">Project ID</label>
+                        <input asp-for="ProjectID" class="govuk-input" type="text" maxlength="100" required>
+                    </div>
+                    <div class="govuk-form-group">
+                        <label asp-for="SchoolName" class="govuk-label" for="school-name">School Name</label>
+                        <input asp-for="SchoolName" class ="govuk-input" type="text" maxlength="100" required>
+                    </div>
+                    <div class="govuk-form-group">
+                        <label asp-for="ApplicationNumber" class="govuk-label" for="application-number">Application Number</label>
+                        <input asp-for="ApplicationNumber" class ="govuk-input" type="text" maxlength="100" required>
+                    </div>
+                    <div class="govuk-form-group">
+                        <label asp-for="ApplicationWave" class="govuk-label" for="application-wave">Application Wave</label>
+                        <input asp-for="ApplicationWave" class="govuk-input" type="text" maxlength="100" required>
+                    </div>
+                    <div class="govuk-button-group">
+                        <button data-prevent-double-click="true"
+                                class="govuk-button govuk-!-margin-top-6"
+                                data-module="govuk-button"
+                                role="button"
+                                id="edit"
+                                name="action"
+                                value="create">
+                            Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

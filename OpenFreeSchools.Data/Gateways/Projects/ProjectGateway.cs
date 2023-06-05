@@ -15,6 +15,7 @@ namespace OpenFreeSchools.Data.Gateways.Projects
 		Task<Project> CreateProject(Project request);
 		Project[] GetProjectsByUser(string user);
         Task<Project> DeleteProject(Project request);
+        Task<Project> EditProject(Project request);
     }
 
 	public class ProjectGateway : IProjectGateway
@@ -85,6 +86,27 @@ namespace OpenFreeSchools.Data.Gateways.Projects
             catch (Exception ex)
             {
                 _logger.LogError("An application exception has occurred whilst deleting Project with Id {Id}, {ex}", request.Id, ex);
+                throw;
+            }
+        }
+
+        public async Task<Project> EditProject(Project request)
+        {
+            try
+            {
+                request.UpdatedAt = request.CreatedAt;
+                _openFreeSchoolsDbContext.Projects.Update(request);
+                await _openFreeSchoolsDbContext.SaveChangesAsync();
+                return request;
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError("Failed to edit Project with Id {Id}, {ex}", request.Id, ex);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("An application exception has occurred whilst editing Project with Id {Id}, {ex}", request.Id, ex);
                 throw;
             }
         }
