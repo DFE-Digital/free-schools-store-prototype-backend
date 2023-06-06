@@ -15,7 +15,7 @@ namespace ConcernsCaseWork.API.Controllers
 		private readonly ILogger<ProjectController> _logger;
 		private readonly IUseCase<CreateProjectRequest, ProjectResponse> _createProjectUseCase;
         private readonly IUseCase<GetAllProjectsRequest, ProjectResponse[]> _getAllProjectsUseCase;
-        private readonly IUseCase<GetProjectRequest, ProjectResponse[]> _getProjectUseCase;
+        private readonly IUseCase<GetProjectRequest, ProjectResponse> _getProjectUseCase;
         private readonly IUseCase<DeleteProjectRequest, ProjectResponse> _deleteProjectUseCase;
         private readonly IUseCase<EditProjectRequest, ProjectResponse> _editProjectUseCase;
 
@@ -49,12 +49,11 @@ namespace ConcernsCaseWork.API.Controllers
 
         [HttpGet]
         [MapToApiVersion("1.0")]
-        public async Task<ActionResult<ApiResponseV2<ProjectResponse[]>>> GetProject(string projectId, CancellationToken cancellationToken = default)
+        public async Task<ActionResult<ApiResponseV2<ProjectResponse>>> GetProject(string projectId, CancellationToken cancellationToken = default)
         {
             var project = _getProjectUseCase.Execute(new GetProjectRequest() { ProjectId = projectId });
 
-            var pagingResponse = PagingResponseFactory.Create(1, projects.Count(), projects.Count(), Request);
-            var response = new ApiResponseV2<ProjectResponse>(projects, pagingResponse);
+            var response = new ApiResponseV2<ProjectResponse>(project);
 
             return new ObjectResult(response) { StatusCode = StatusCodes.Status200OK };
         }

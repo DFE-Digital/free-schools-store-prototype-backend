@@ -27,16 +27,16 @@ namespace Dfe.OpenFreeSchools.Services.Project
         {
             var Url = "https://localhost:3001/api/Project";
 
-                var request = new HttpRequestMessage(HttpMethod.Get, $"{Url}?user=Sukhy");
+                var request = new HttpRequestMessage(HttpMethod.Get, $"{Url}?projectId={ProjectId}");
                 var client = _clientFactory.CreateClient();
                 try
                 {
                     var response = await client.SendAsync(request);
                     var content = await response.Content.ReadAsStringAsync();
 
-                    var wrapper = JsonSerializer.Deserialize<ApiListWrapper<ProjectResponse>>(content);
+                    var wrapper = JsonSerializer.Deserialize<ProjectResponse>(content);
 
-                    return wrapper.Data.ToArray();
+                return wrapper;
                 }
                 catch (Exception ex)
                 {
