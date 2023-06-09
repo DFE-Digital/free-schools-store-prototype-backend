@@ -13,19 +13,19 @@
                 <form class="govuk-form-group" method="POST" id="edit-project-form">
                     <div class="govuk-form-group">
                         <label asp-for="ProjectID" class="govuk-label" for="project-id">Project ID</label>
-                        <input asp-for="ProjectID" class="govuk-input" type="text" maxlength="100" required>
+                        <input asp-for="ProjectID" class="govuk-input" type="text" maxlength="100" value="@Model.Project.ProjectId" disabled/>
                     </div>
                     <div class="govuk-form-group">
                         <label asp-for="SchoolName" class="govuk-label" for="school-name">School Name</label>
-                        <input asp-for="SchoolName" class ="govuk-input" type="text" maxlength="100" required>
+                        <input asp-for="SchoolName" class ="govuk-input" type="text" maxlength="100" value="@Model.Project.SchoolName" required>
                     </div>
                     <div class="govuk-form-group">
                         <label asp-for="ApplicationNumber" class="govuk-label" for="application-number">Application Number</label>
-                        <input asp-for="ApplicationNumber" class ="govuk-input" type="text" maxlength="100" required>
+                        <input asp-for="ApplicationNumber" class ="govuk-input" type="text" maxlength="100" value="@Model.Project.ApplicationNumber" required>
                     </div>
                     <div class="govuk-form-group">
                         <label asp-for="ApplicationWave" class="govuk-label" for="application-wave">Application Wave</label>
-                        <input asp-for="ApplicationWave" class="govuk-input" type="text" maxlength="100" required>
+                        <input asp-for="ApplicationWave" class="govuk-input" type="text" maxlength="100" value="@Model.Project.ApplicationWave" required>
                     </div>
                     <div class="govuk-button-group">
                         <button data-prevent-double-click="true"
@@ -34,7 +34,7 @@
                                 role="button"
                                 id="edit"
                                 name="action"
-                                value="create">
+                                value="edit">
                             Save Changes
                         </button>
                     </div>

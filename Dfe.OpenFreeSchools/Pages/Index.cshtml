@@ -50,7 +50,7 @@
                         {
                             <tr class="govuk-table__row tr__large" data-testid="row-@activeCase.ProjectId">
                                 <td class="govuk-table__cell" data-testid="case-id">
-                                    <a class="govuk-link" href="/project/delete/@activeCase.ProjectId/">@activeCase.ProjectId</a>
+                                    <a class="govuk-link" asp-page="/project/edit" asp-route-projectId="@activeCase.ProjectId">@activeCase.ProjectId</a>
                                 </td>
                                 <td class="govuk-table__cell" data-testid="updated-at">
                                     @activeCase.SchoolName

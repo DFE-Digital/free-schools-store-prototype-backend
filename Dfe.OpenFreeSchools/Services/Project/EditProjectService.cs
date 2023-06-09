@@ -40,7 +40,7 @@ namespace Dfe.OpenFreeSchools.Services.Project
 
 
                 // Execute request
-                var response = await client.PostAsync($"https://localhost:3001/api/Project", request);
+                var response = await client.PutAsync($"https://localhost:3001/api/Project", request);
 
                 // Check status code
                 response.EnsureSuccessStatusCode();

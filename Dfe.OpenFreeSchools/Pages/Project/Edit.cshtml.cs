@@ -2,6 +2,7 @@
 using Dfe.OpenFreeSchools.Services.Project;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using OpenFreeSchools.API.Contracts.ResponseModels.Project;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
@@ -10,6 +11,11 @@ namespace Dfe.OpenFreeSchools.Pages.Project
 {
     public class EditProjectModel : PageModel
     {
+        [BindProperty]
+        public ProjectResponse Project { get; set; }
+
+        private IGetProjectByIdService _getProjectByIdService { get; set; }
+
         [BindProperty]
         [MaxLength(10)]
         public string ProjectID { get; set; }
@@ -25,20 +31,38 @@ namespace Dfe.OpenFreeSchools.Pages.Project
         [BindProperty]
         [MaxLength(10)]
         public string ApplicationWave { get; set; }
-        public IEditProjectService _editProjectService { get; }
-    //    public ILogger<EditProjectModel> _logger { get; }
+        private IEditProjectService _editProjectService { get; set; }
+        //    public ILogger<EditProjectModel> _logger { get; }
 
         public EditProjectModel(
-            IEditProjectService editProjectService
-         //   ILogger<EditProjectModel> logger
+            IGetProjectByIdService getProjectByIdService, IEditProjectService editProjectService
+            //   ILogger<EditProjectModel> logger
             )
         {
+            _getProjectByIdService = getProjectByIdService;
             _editProjectService = editProjectService;
             //_logger = logger;
         }
 
-        public void OnGet()
+        public async Task OnGetAsync(string projectId)
         {
+            await LoadPage(projectId);
+        }
+
+        private async Task<ActionResult> LoadPage(string projectId)
+        {
+            try
+            {
+                Project = await _getProjectByIdService.GetProject(projectId);
+                return Page();
+            }
+            catch (Exception ex)
+            {
+                //_logger.LogError("Case::DetailsPageModel::LoadPage::Exception - {Message}", ex.Message);
+
+                //TempData["Error.Message"] = ErrorOnGetPage;
+                return Page();
+            }
         }
 
         public async Task<IActionResult> OnPostAsync()

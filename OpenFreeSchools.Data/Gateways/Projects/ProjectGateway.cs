@@ -14,6 +14,7 @@ namespace OpenFreeSchools.Data.Gateways.Projects
 	{
 		Task<Project> CreateProject(Project request);
 		Project[] GetProjectsByUser(string user);
+        Project GetProjectById(string projectId);
         Task<Project> DeleteProject(Project request);
         Task<Project> EditProject(Project request);
     }
@@ -44,6 +45,25 @@ namespace OpenFreeSchools.Data.Gateways.Projects
             catch (Exception ex)
             {
                 _logger.LogError("An application exception has occurred whilst creating Project with Id {Id}, {ex}", user, ex);
+                throw;
+            }
+        }
+
+        public Project GetProjectById(string projectId)
+        {
+            try
+            {
+                var project = _openFreeSchoolsDbContext.Projects.Where(x => x.ProjectId == projectId).ToArray();
+                return project.First();
+            }
+            catch (DbUpdateException ex)
+            {
+                _logger.LogError("Failed to get Project with Id {Id}, {ex}", projectId, ex);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("An application exception has occurred whilst creating Project with Id {Id}, {ex}", projectId, ex);
                 throw;
             }
         }
@@ -95,7 +115,9 @@ namespace OpenFreeSchools.Data.Gateways.Projects
             try
             {
                 request.UpdatedAt = request.CreatedAt;
-                _openFreeSchoolsDbContext.Projects.Update(request);
+                Project project = _openFreeSchoolsDbContext.Projects.Where(p => p.ProjectId == request.ProjectId).SingleOrDefault();
+                _openFreeSchoolsDbContext.Attach(project);
+                _openFreeSchoolsDbContext.Add(request);
                 await _openFreeSchoolsDbContext.SaveChangesAsync();
                 return request;
             }
