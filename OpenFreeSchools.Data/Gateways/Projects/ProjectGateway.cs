@@ -115,9 +115,11 @@ namespace OpenFreeSchools.Data.Gateways.Projects
             try
             {
                 request.UpdatedAt = request.CreatedAt;
+
                 Project project = _openFreeSchoolsDbContext.Projects.Where(p => p.ProjectId == request.ProjectId).SingleOrDefault();
-                _openFreeSchoolsDbContext.Attach(project);
-                _openFreeSchoolsDbContext.Add(request);
+                project.SchoolName = request.SchoolName;
+                project.ApplicationNumber = request.ApplicationNumber;
+                project.ApplicationWave = request.ApplicationWave;
                 await _openFreeSchoolsDbContext.SaveChangesAsync();
                 return request;
             }
