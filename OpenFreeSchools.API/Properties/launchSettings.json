@@ -1,13 +1,14 @@
 {
+  "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
     "OpenFreeSchools.API": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:3001",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:3001"
+      }
     },
     "WSL": {
       "commandName": "WSL2",
@@ -19,6 +20,5 @@
       },
       "distributionName": ""
     }
-  },
-  "$schema": "http://json.schemastore.org/launchsettings.json"
+  }
 }
