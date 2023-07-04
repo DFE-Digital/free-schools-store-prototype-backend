@@ -31,7 +31,7 @@ namespace Dfe.BuildFreeSchools.Pages
 		{
 			try
 			{
-				Projects = await _getProjectsByUserService.GetProjects("Sukhy");
+				Projects = await _getProjectsByUserService.GetProjects();
 				return Page();
 			}
 			catch (Exception ex)
