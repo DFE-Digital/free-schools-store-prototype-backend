@@ -14,7 +14,7 @@ namespace Dfe.BuildFreeSchools.Pages
 		public ProjectResponse[] Projects { get; set; }
 
 		[BindProperty]
-		public bool UserIsAdministrator { get; set; }
+		public bool UserIsTeamLead { get; set; }
 
         private IGetProjectsByUserService _getProjectsByUserService { get; set; }
 
@@ -35,7 +35,7 @@ namespace Dfe.BuildFreeSchools.Pages
 			try
 			{
 				Projects = await _getProjectsByUserService.GetProjects();
-				UserIsAdministrator = User.IsInRole("administrator");
+				UserIsTeamLead = User.IsInRole("teamlead");
 				return Page();
 			}
 			catch (Exception ex)
