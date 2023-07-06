@@ -1,7 +1,7 @@
-﻿using Dfe.OpenFreeSchools;
-using OpenFreeSchools.API.Contracts.RequestModels.Projects;
+﻿using OpenFreeSchools.API.Contracts.RequestModels.Projects;
 using OpenFreeSchools.API.Contracts.ResponseModels;
 using OpenFreeSchools.API.Contracts.ResponseModels.Project;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Net.Http;
 using System.Net.Mime;
@@ -11,37 +11,38 @@ using System.Threading.Tasks;
 
 namespace Dfe.OpenFreeSchools.Services.Project
 {
-    public class CreateProjectService : ICreateProjectService
+    public class EditProjectService : IEditProjectService
     {
-        //   public ILogger<CreateProjectService> _logger;
+        //   public ILogger<EditProjectService> _logger;
         private readonly IHttpClientFactory _clientFactory;
 
-        public CreateProjectService(IHttpClientFactory clientFactory)
-        { //(ILogger<CreateProjectService> logger, IHttpClientFactory clientFactory) { 
+        public EditProjectService(IHttpClientFactory clientFactory)
+        { //(ILogger<EditProjectService> logger, IHttpClientFactory clientFactory) { 
           //  _logger = logger;
             _clientFactory = clientFactory;
+
         }
 
-        public async Task<long> CreateProject(string ProjectID, string SchoolName, string ApplicationNumber, string ApplicationWave, string CreatedBy)
+        public async Task<long> EditProject(string ProjectID, string SchoolName, string ApplicationNumber, string ApplicationWave, string CreatedBy)
         {
-            //   _logger.LogInformation("CreateProjectService::CreateProject execution");
+            //   _logger.LogInformation("EditProjectService::EditProject execution");
             try
             {
                 //        _logger.LogInformation("CaseService::PostCase");
 
-                // Create a request
+                // Edit a request
                 var request = new StringContent(
-                    JsonSerializer.Serialize(new CreateProjectRequest() { ApplicationNumber = ApplicationNumber, ApplicationWave = ApplicationWave, ProjectId = ProjectID, SchoolName = SchoolName, CreatedBy = CreatedBy }),
+                    JsonSerializer.Serialize(new EditProjectRequest() { ApplicationNumber = ApplicationNumber, ApplicationWave = ApplicationWave, ProjectId = ProjectID, SchoolName = SchoolName, CreatedBy = CreatedBy }),
                     Encoding.UTF8,
                     MediaTypeNames.Application.Json);
 
-                // Create http client
+                // Edit http client
                 var client = _clientFactory.CreateClient();
 
-                
+
 
                 // Execute request
-                var response = await client.PostAsync($"https://localhost:3001/api/Project", request);
+                var response = await client.PutAsync($"https://localhost:3001/api/Project", request);
 
                 // Check status code
                 response.EnsureSuccessStatusCode();

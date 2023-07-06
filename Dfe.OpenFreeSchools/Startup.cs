@@ -64,9 +64,11 @@ public class Startup
 
       services.AddScoped<ICreateProjectService, CreateProjectService>();
       services.AddScoped<IGetProjectsByUserService, GetProjectsByUserService>();
+      services.AddScoped<IGetProjectByIdService, GetProjectByIdService>();
       services.AddScoped<IDeleteProjectService, DeleteProjectService>();
+      services.AddScoped<IEditProjectService, EditProjectService>();
 
-        services.AddScoped(sp => sp.GetService<IHttpContextAccessor>()?.HttpContext?.Session);
+      services.AddScoped(sp => sp.GetService<IHttpContextAccessor>()?.HttpContext?.Session);
       services.AddSession(options =>
       {
          options.IdleTimeout = _authenticationExpiration;
