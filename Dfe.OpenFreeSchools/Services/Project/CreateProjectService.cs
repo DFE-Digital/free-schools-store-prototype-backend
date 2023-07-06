@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Dfe.OpenFreeSchools;
 using OpenFreeSchools.API.Contracts.RequestModels.Projects;
 using OpenFreeSchools.API.Contracts.ResponseModels;
 using OpenFreeSchools.API.Contracts.ResponseModels.Project;
@@ -15,28 +15,23 @@ namespace Dfe.OpenFreeSchools.Services.Project
     {
         //   public ILogger<CreateProjectService> _logger;
         private readonly IHttpClientFactory _clientFactory;
-        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public CreateProjectService(IHttpClientFactory clientFactory, IHttpContextAccessor httpContextAccessor)
+        public CreateProjectService(IHttpClientFactory clientFactory)
         { //(ILogger<CreateProjectService> logger, IHttpClientFactory clientFactory) { 
           //  _logger = logger;
             _clientFactory = clientFactory;
-            _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<long> CreateProject(string ProjectID, string SchoolName, string ApplicationNumber, string ApplicationWave)
+        public async Task<long> CreateProject(string ProjectID, string SchoolName, string ApplicationNumber, string ApplicationWave, string CreatedBy)
         {
             //   _logger.LogInformation("CreateProjectService::CreateProject execution");
             try
             {
                 //        _logger.LogInformation("CaseService::PostCase");
 
-                //Get user
-                string user = _httpContextAccessor.HttpContext?.User.Identity.Name.ToString();
-
                 // Create a request
                 var request = new StringContent(
-                    JsonSerializer.Serialize(new CreateProjectRequest() { ApplicationNumber = ApplicationNumber, ApplicationWave = ApplicationWave, ProjectId = ProjectID, SchoolName = SchoolName, CreatedBy = user }),
+                    JsonSerializer.Serialize(new CreateProjectRequest() { ApplicationNumber = ApplicationNumber, ApplicationWave = ApplicationWave, ProjectId = ProjectID, SchoolName = SchoolName, CreatedBy = CreatedBy }),
                     Encoding.UTF8,
                     MediaTypeNames.Application.Json);
 

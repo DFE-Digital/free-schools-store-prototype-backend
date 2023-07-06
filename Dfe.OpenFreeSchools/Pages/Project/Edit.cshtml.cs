@@ -76,9 +76,9 @@ namespace Dfe.OpenFreeSchools.Pages.Project
                     return Page();
                 }
 
-                var caseUrn = await _editProjectService.EditProject(ProjectID, SchoolName, ApplicationNumber, ApplicationWave, "Sukhy");
+                var caseUrn = await _editProjectService.EditProject(ProjectID, SchoolName, ApplicationNumber, ApplicationWave, User.Identity.Name.ToString());
 
-                return Redirect($"/");
+                return Redirect("~/");
             }
             catch (Exception ex)
             {

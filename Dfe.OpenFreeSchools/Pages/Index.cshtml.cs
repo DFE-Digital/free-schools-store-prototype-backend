@@ -8,10 +8,13 @@ using System.Threading.Tasks;
 
 namespace Dfe.BuildFreeSchools.Pages
 {
-    public class IndexModel : PageModel
-    {
-        [BindProperty]
-        public ProjectResponse[] Projects { get; set; }
+	public class IndexModel : PageModel
+	{
+		[BindProperty]
+		public ProjectResponse[] Projects { get; set; }
+
+		[BindProperty]
+		public bool UserIsAdministrator { get; set; }
 
         private IGetProjectsByUserService _getProjectsByUserService { get; set; }
 
@@ -32,6 +35,7 @@ namespace Dfe.BuildFreeSchools.Pages
 			try
 			{
 				Projects = await _getProjectsByUserService.GetProjects();
+				UserIsAdministrator = User.IsInRole("administrator");
 				return Page();
 			}
 			catch (Exception ex)

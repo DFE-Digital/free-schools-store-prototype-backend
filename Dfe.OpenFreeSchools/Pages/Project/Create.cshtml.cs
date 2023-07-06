@@ -52,7 +52,7 @@ namespace Dfe.OpenFreeSchools.Pages.Project
                     return Page();
                 }
 
-                var caseUrn = await _createProjectService.CreateProject(ProjectID, SchoolName, ApplicationNumber, ApplicationWave);
+                var caseUrn = await _createProjectService.CreateProject(ProjectID, SchoolName, ApplicationNumber, ApplicationWave, User.Identity.Name.ToString());
 
                 return Redirect("~/");
             }

@@ -10,12 +10,15 @@
         <div class="govuk-grid-column-two-thirds">
             <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Project list</h2>
             <p class="govuk-body">The project list will help you manage projects that are in flight.</p>
-            <a class="govuk-button" asp-page="/project/create" role="button" data-testid="create-project-button">
-                Create Project
-            </a>
-            <a class="govuk-button govuk-button--warning" asp-page="/project/delete" role="button" data-testid="delete-project-button">
-                Delete Project
-            </a>
+            @if (Model.UserIsAdministrator == true)
+                {
+                <a class="govuk-button" asp-page="/project/create" role="button" data-testid="create-project-button">
+                    Create Project
+                </a>
+                <a class="govuk-button govuk-button--warning" asp-page="/project/delete" role="button" data-testid="delete-project-button">
+                    Delete Project
+                </a>
+                }
             <!-- List -->
 
             <table class="govuk-table">
