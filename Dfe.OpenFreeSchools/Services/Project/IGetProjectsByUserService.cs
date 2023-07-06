@@ -5,6 +5,6 @@ namespace Dfe.OpenFreeSchools.Services.Project
 {
     public interface IGetProjectsByUserService
     {
-        public Task<ProjectResponse[]> GetProjects();
+        public Task<ProjectResponse[]> GetProjects(string user);
     }
 }
