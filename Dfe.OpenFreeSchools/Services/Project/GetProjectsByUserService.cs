@@ -19,18 +19,15 @@ namespace Dfe.OpenFreeSchools.Services.Project
         private readonly IHttpClientFactory _clientFactory;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-		public GetProjectsByUserService(IHttpClientFactory clientFactory, IHttpContextAccessor httpContextAccessor)
+		public GetProjectsByUserService(IHttpClientFactory clientFactory)
         { //(ILogger<CreateProjectService> logger, IHttpClientFactory clientFactory) { 
           //  _logger = logger;
             _clientFactory = clientFactory;
-            _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<ProjectResponse[]> GetProjects()
+        public async Task<ProjectResponse[]> GetProjects(string user)
         {
             var Url = "https://localhost:3001/api/Project";
-
-            string user = _httpContextAccessor.HttpContext?.User.Identity.Name.ToString();
 
                 var request = new HttpRequestMessage(HttpMethod.Get, $"{Url}?user={user}");
                 var client = _clientFactory.CreateClient();
