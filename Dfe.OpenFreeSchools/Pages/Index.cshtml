@@ -10,7 +10,7 @@
         <div class="govuk-grid-column-two-thirds">
             <h2 class="govuk-heading-l govuk-!-margin-bottom-2">Project list</h2>
             <p class="govuk-body">The project list will help you manage projects that are in flight.</p>
-            @if (Model.UserIsTeamLead == true)
+            @if (Model.UserCanCreateProject == true)
                 {
                 <a class="govuk-button" asp-page="/project/create" role="button" data-testid="create-project-button">
                     Create Project
