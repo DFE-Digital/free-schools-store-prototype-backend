@@ -56,13 +56,13 @@
                                     <a class="govuk-link" asp-page="/project/edit" asp-route-projectId="@activeCase.ProjectId">@activeCase.ProjectId</a>
                                 </td>
                                 <td class="govuk-table__cell" data-testid="updated-at">
-                                    @activeCase.SchoolName
+                                    @activeCase.CurrentFreeSchoolName
                                 </td>
                                 <td class="govuk-table__cell" data-testid="created-at">
-                                    @activeCase.ApplicationNumber
+                                    @activeCase.FreeSchoolsApplicationNumber
                                 </td>
                                 <td class="govuk-table__cell" data-testid="trust-name">
-                                    @activeCase.ApplicationWave
+                                    @activeCase.FreeSchoolApplicationWave
                                 </td>
                             </tr>
                         }

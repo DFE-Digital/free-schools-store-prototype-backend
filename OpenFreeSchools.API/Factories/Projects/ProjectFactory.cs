@@ -13,9 +13,9 @@ namespace OpenFreeSchools.API.Factories.Projects
 			return new Project
 			{
 				ProjectId = createProjectRequest.ProjectId,
-				SchoolName = createProjectRequest.SchoolName,
-                ApplicationNumber = createProjectRequest.ApplicationNumber,
-                ApplicationWave = createProjectRequest.ApplicationWave,
+                CurrentFreeSchoolName = createProjectRequest.CurrentFreeSchoolName,
+                FreeSchoolsApplicationNumber = createProjectRequest.FreeSchoolsApplicationNumber,
+                FreeSchoolApplicationWave = createProjectRequest.FreeSchoolApplicationWave,
                 CreatedAt = DateTime.Now,
 				CreatedBy = createProjectRequest.CreatedBy			
 			};
@@ -27,9 +27,9 @@ namespace OpenFreeSchools.API.Factories.Projects
 			{
 				Id = model.Id,
 				ProjectId = model.ProjectId,
-				SchoolName= model.SchoolName,
-				ApplicationNumber = model.ApplicationNumber,
-				ApplicationWave = model.ApplicationWave,
+                CurrentFreeSchoolName = model.CurrentFreeSchoolName,
+                FreeSchoolsApplicationNumber = model.FreeSchoolsApplicationNumber,
+                FreeSchoolApplicationWave = model.FreeSchoolApplicationWave,
 				CreatedAt = model.CreatedAt,
 				CreatedBy = model.CreatedBy,
 				UpdatedAt= model.UpdatedAt,
@@ -41,9 +41,9 @@ namespace OpenFreeSchools.API.Factories.Projects
                 return new Project
                 {
                     ProjectId = editProjectRequest.ProjectId,
-                    SchoolName = editProjectRequest.SchoolName,
-                    ApplicationNumber = editProjectRequest.ApplicationNumber,
-                    ApplicationWave = editProjectRequest.ApplicationWave,
+                    CurrentFreeSchoolName = editProjectRequest.CurrentFreeSchoolName,
+                    FreeSchoolsApplicationNumber = editProjectRequest.FreeSchoolsApplicationNumber,
+                    FreeSchoolApplicationWave = editProjectRequest.FreeSchoolApplicationWave,
                     CreatedAt = DateTime.Now,
                     CreatedBy = editProjectRequest.CreatedBy
                 };
@@ -55,9 +55,9 @@ namespace OpenFreeSchools.API.Factories.Projects
                 {
                     Id = model.Id,
                     ProjectId = model.ProjectId,
-                    SchoolName = model.SchoolName,
-                    ApplicationNumber = model.ApplicationNumber,
-                    ApplicationWave = model.ApplicationWave,
+                    CurrentFreeSchoolName = model.CurrentFreeSchoolName,
+                    FreeSchoolsApplicationNumber = model.FreeSchoolsApplicationNumber,
+                    FreeSchoolApplicationWave = model.FreeSchoolApplicationWave,
                     CreatedAt = model.CreatedAt,
                     CreatedBy = model.CreatedBy,
                     UpdatedAt = model.UpdatedAt,
@@ -78,9 +78,9 @@ namespace OpenFreeSchools.API.Factories.Projects
             {
                 Id = model.Id,
                 ProjectId = model.ProjectId,
-                SchoolName = model.SchoolName,
-                ApplicationNumber = model.ApplicationNumber,
-                ApplicationWave = model.ApplicationWave,
+                CurrentFreeSchoolName = model.CurrentFreeSchoolName,
+                FreeSchoolsApplicationNumber = model.FreeSchoolsApplicationNumber,
+                FreeSchoolApplicationWave = model.FreeSchoolApplicationWave,
                 CreatedAt = model.CreatedAt,
                 CreatedBy = model.CreatedBy,
                 UpdatedAt = model.UpdatedAt,

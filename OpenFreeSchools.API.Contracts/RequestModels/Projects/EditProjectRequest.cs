@@ -7,11 +7,11 @@ namespace OpenFreeSchools.API.Contracts.RequestModels.Projects
         [Required]
         public string ProjectId { get; set; }
         [Required]
-        public string SchoolName { get; set; }
+        public string CurrentFreeSchoolName { get; set; }
         [Required]
-        public string ApplicationNumber { get; set; }
+        public string FreeSchoolsApplicationNumber { get; set; }
         [Required]
-        public string ApplicationWave { get; set; }
+        public string FreeSchoolApplicationWave { get; set; }
         [Required]
         public string CreatedBy { get; set; }
     }
