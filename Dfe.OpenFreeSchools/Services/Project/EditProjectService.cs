@@ -23,7 +23,7 @@ namespace Dfe.OpenFreeSchools.Services.Project
 
         }
 
-        public async Task<long> EditProject(string ProjectID, string SchoolName, string ApplicationNumber, string ApplicationWave, string CreatedBy)
+        public async Task<long> EditProject(string ProjectID, string CurrentFreeSchoolName, string FreeSchoolsApplicationNumber, string FreeSchoolApplicationWave, string CreatedBy)
         {
             //   _logger.LogInformation("EditProjectService::EditProject execution");
             try
@@ -32,7 +32,7 @@ namespace Dfe.OpenFreeSchools.Services.Project
 
                 // Edit a request
                 var request = new StringContent(
-                    JsonSerializer.Serialize(new EditProjectRequest() { ApplicationNumber = ApplicationNumber, ApplicationWave = ApplicationWave, ProjectId = ProjectID, SchoolName = SchoolName, CreatedBy = CreatedBy }),
+                    JsonSerializer.Serialize(new EditProjectRequest() { FreeSchoolsApplicationNumber = FreeSchoolsApplicationNumber, FreeSchoolApplicationWave = FreeSchoolApplicationWave, ProjectId = ProjectID, CurrentFreeSchoolName = CurrentFreeSchoolName, CreatedBy = CreatedBy }),
                     Encoding.UTF8,
                     MediaTypeNames.Application.Json);
 

@@ -22,7 +22,7 @@ namespace Dfe.OpenFreeSchools.Services.Project
             _clientFactory = clientFactory;
         }
 
-        public async Task<long> CreateProject(string ProjectID, string SchoolName, string ApplicationNumber, string ApplicationWave, string CreatedBy)
+        public async Task<long> CreateProject(string ProjectID, string CurrentFreeSchoolName, string FreeSchoolsApplicationNumber, string FreeSchoolApplicationWave, string CreatedBy)
         {
             //   _logger.LogInformation("CreateProjectService::CreateProject execution");
             try
@@ -31,7 +31,7 @@ namespace Dfe.OpenFreeSchools.Services.Project
 
                 // Create a request
                 var request = new StringContent(
-                    JsonSerializer.Serialize(new CreateProjectRequest() { ApplicationNumber = ApplicationNumber, ApplicationWave = ApplicationWave, ProjectId = ProjectID, SchoolName = SchoolName, CreatedBy = CreatedBy }),
+                    JsonSerializer.Serialize(new CreateProjectRequest() { FreeSchoolsApplicationNumber = FreeSchoolsApplicationNumber, FreeSchoolApplicationWave = FreeSchoolApplicationWave, ProjectId = ProjectID, CurrentFreeSchoolName = CurrentFreeSchoolName, CreatedBy = CreatedBy }),
                     Encoding.UTF8,
                     MediaTypeNames.Application.Json);
 

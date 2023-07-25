@@ -12,13 +12,13 @@ namespace Dfe.BuildFreeSchools.Pages.Project
         public string ProjectID { get; set; }
         
         [MaxLength(20)]
-        public string SchoolName { get; set; }
+        public string CurrentFreeSchoolName { get; set; }
         
         [MaxLength(10)]
-        public string ApplicationNumber { get; set; }
+        public string FreeSchoolsApplicationNumber { get; set; }
         
         [MaxLength(10)]
-        public string ApplicationWave { get; set; }
+        public string FreeSchoolApplicationWave { get; set; }
         public ICreateProjectService _createProjectService { get; }
         public ILogger<CreateProjectModel> _logger { get; }
 
@@ -46,7 +46,7 @@ namespace Dfe.BuildFreeSchools.Pages.Project
                     return Page();
                 }
                 
-                var caseUrn = await _createProjectService.CreateProject(ProjectID, SchoolName, ApplicationNumber, ApplicationWave, "Test");
+                var caseUrn = await _createProjectService.CreateProject(ProjectID, CurrentFreeSchoolName, FreeSchoolsApplicationNumber, FreeSchoolApplicationWave, "Test");
 
                 return Redirect($"/case/{caseUrn}/management");
             }

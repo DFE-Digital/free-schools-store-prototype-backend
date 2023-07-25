@@ -2,6 +2,6 @@
 {
     public interface ICreateProjectService
     {
-        Task<long> CreateProject(string ProjectID, string SchoolName, string ApplicationNumber, string ApplicationWave, string CreatedBy);
+        Task<long> CreateProject(string ProjectID, string CurrentFreeSchoolName, string FreeSchoolsApplicationNumber, string FreeSchoolApplicationWave, string CreatedBy);
     }
 }

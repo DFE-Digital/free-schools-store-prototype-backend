@@ -16,15 +16,15 @@ namespace Dfe.OpenFreeSchools.Pages.Project
 
         [BindProperty]
         [MaxLength(20)]
-        public string SchoolName { get; set; }
+        public string CurrentFreeSchoolName { get; set; }
 
         [BindProperty]
         [MaxLength(10)]
-        public string ApplicationNumber { get; set; }
+        public string FreeSchoolsApplicationNumber { get; set; }
 
         [BindProperty]
         [MaxLength(10)]
-        public string ApplicationWave { get; set; }
+        public string FreeSchoolApplicationWave { get; set; }
         public ICreateProjectService _createProjectService { get; }
     //    public ILogger<CreateProjectModel> _logger { get; }
 
@@ -52,7 +52,7 @@ namespace Dfe.OpenFreeSchools.Pages.Project
                     return Page();
                 }
 
-                var caseUrn = await _createProjectService.CreateProject(ProjectID, SchoolName, ApplicationNumber, ApplicationWave, User.Identity.Name.ToString());
+                var caseUrn = await _createProjectService.CreateProject(ProjectID, CurrentFreeSchoolName, FreeSchoolsApplicationNumber, FreeSchoolApplicationWave, User.Identity.Name.ToString());
 
                 return Redirect("~/");
             }

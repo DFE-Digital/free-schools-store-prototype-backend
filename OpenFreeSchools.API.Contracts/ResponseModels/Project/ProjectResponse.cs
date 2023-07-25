@@ -9,12 +9,12 @@ namespace OpenFreeSchools.API.Contracts.ResponseModels.Project
         public int Id { get; set; }
 		[JsonPropertyName("projectId")]
 		public string ProjectId { get; set; }
-        [JsonPropertyName("schoolName")]
-        public string SchoolName { get; set; }
-        [JsonPropertyName("applicationNumber")]
-        public string ApplicationNumber { get; set; }
-		[JsonPropertyName("applicationWave")]
-		public string ApplicationWave { get; set; }
+        [JsonPropertyName("currentFreeSchoolName")]
+        public string CurrentFreeSchoolName { get; set; }
+        [JsonPropertyName("freeSchoolsApplicationNumber")]
+        public string FreeSchoolsApplicationNumber { get; set; }
+		[JsonPropertyName("freeSchoolApplicationWave")]
+		public string FreeSchoolApplicationWave { get; set; }
 		[JsonPropertyName("createdAt")]
 		public DateTime CreatedAt { get; set; }
 		[JsonPropertyName("updatedAt")]

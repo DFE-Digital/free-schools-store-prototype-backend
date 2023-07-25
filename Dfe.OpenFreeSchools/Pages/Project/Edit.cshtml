@@ -16,16 +16,16 @@
                         <input asp-for="ProjectID" class="govuk-input" type="text" maxlength="100" value="@Model.Project.ProjectId" disabled/>
                     </div>
                     <div class="govuk-form-group">
-                        <label asp-for="SchoolName" class="govuk-label" for="school-name">School Name</label>
-                        <input asp-for="SchoolName" class ="govuk-input" type="text" maxlength="100" value="@Model.Project.SchoolName" required>
+                        <label asp-for="CurrentFreeSchoolName" class="govuk-label" for="school-name">School Name</label>
+                        <input asp-for="CurrentFreeSchoolName" class ="govuk-input" type="text" maxlength="100" value="@Model.Project.CurrentFreeSchoolName" required>
                     </div>
                     <div class="govuk-form-group">
-                        <label asp-for="ApplicationNumber" class="govuk-label" for="application-number">Application Number</label>
-                        <input asp-for="ApplicationNumber" class ="govuk-input" type="text" maxlength="100" value="@Model.Project.ApplicationNumber" required>
+                        <label asp-for="FreeSchoolsApplicationNumber" class="govuk-label" for="application-number">Application Number</label>
+                        <input asp-for="FreeSchoolsApplicationNumber" class ="govuk-input" type="text" maxlength="100" value="@Model.Project.FreeSchoolsApplicationNumber" required>
                     </div>
                     <div class="govuk-form-group">
-                        <label asp-for="ApplicationWave" class="govuk-label" for="application-wave">Application Wave</label>
-                        <input asp-for="ApplicationWave" class="govuk-input" type="text" maxlength="100" value="@Model.Project.ApplicationWave" required>
+                        <label asp-for="FreeSchoolApplicationWave" class="govuk-label" for="application-wave">Application Wave</label>
+                        <input asp-for="FreeSchoolApplicationWave" class="govuk-input" type="text" maxlength="100" value="@Model.Project.FreeSchoolApplicationWave" required>
                     </div>
                     <div class="govuk-button-group">
                         <button data-prevent-double-click="true"
