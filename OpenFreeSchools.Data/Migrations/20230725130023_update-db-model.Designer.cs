@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OpenFreeSchools.Data;
 
@@ -11,9 +12,11 @@ using OpenFreeSchools.Data;
 namespace OpenFreeSchools.Data.Migrations
 {
     [DbContext(typeof(OpenFreeSchoolsDbContext))]
-    partial class OpenFreeSchoolsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230725130023_update-db-model")]
+    partial class updatedbmodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

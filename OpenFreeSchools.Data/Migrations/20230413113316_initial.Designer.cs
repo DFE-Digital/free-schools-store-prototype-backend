@@ -66,10 +66,10 @@ namespace OpenFreeSchools.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ApplicationNumber")
+                    b.Property<string>("FreeSchoolsApplicationNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ApplicationWave")
+                    b.Property<string>("FreeSchoolApplicationWave")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -81,7 +81,7 @@ namespace OpenFreeSchools.Data.Migrations
                     b.Property<string>("ProjectId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SchoolName")
+                    b.Property<string>("CurrentFreeSchoolName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")

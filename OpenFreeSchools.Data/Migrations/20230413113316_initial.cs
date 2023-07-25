@@ -43,9 +43,9 @@ namespace OpenFreeSchools.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProjectId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SchoolName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ApplicationNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ApplicationWave = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CurrentFreeSchoolName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FreeSchoolsApplicationNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FreeSchoolApplicationWave = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
